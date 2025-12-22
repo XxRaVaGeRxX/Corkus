@@ -26,6 +26,8 @@
 >
 >Clone the repo
 >
+>     git clone https://github.com/XxRaVaGeRxX/Corkus.git
+>
 > `cd` into the repo
 >
 >Run this command in the repo directory
