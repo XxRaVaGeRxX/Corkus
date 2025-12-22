@@ -21,6 +21,7 @@
 >Run the executable and follow the terminal prompts to generate your ModInfo.xml file
 
 ## Linux
+##### CMake
 >Ensure you have a recent CMake
 >
 >Clone the repo
@@ -38,3 +39,13 @@
 >Then run the program still in the repo directory and it should run in the terminal
 >
 >     ./build/Corkus
+
+##### Pre-Compiled Executable 
+
+>Or try the pre-compiled executable in the build folder
+>
+>Download linux executable in the [build folder](https://github.com/XxRaVaGeRxX/Corkus/tree/master/build)
+>
+>Give it permission to run with `chmod +x ./Corkus` in appropriate directory
+>
+>Then run the executable with `./Corkus`
