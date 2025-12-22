@@ -16,8 +16,25 @@
 ## Usage
 >Clone the repository
 >
->Build with CMake for your platform instructions below
+>Build with CMake for your platform, instructions below.
 >
 >Run the executable and follow the terminal prompts to generate your ModInfo.xml file
-> 
+
+## Linux
+>Ensure you have a recent CMake
 >
+>Clone the repo
+>
+> `cd` into the repo
+>
+>Run this command in the repo directory
+>
+>     chmod +x build.sh
+>
+>Then run this command 
+>
+>     ./build.sh
+>
+>Then run the program still in the repo directory and it should run in the terminal
+>
+>     ./build/Corkus
