@@ -3,6 +3,8 @@ project(Corkus)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Corkus main.cpp)
+add_executable(Corkus main.cpp
+		config.cpp
+		config.h)
 
 target_compile_options(Corkus PRIVATE -Wall -Werror)

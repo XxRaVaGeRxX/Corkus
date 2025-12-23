@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 
+#include "config.h"
 
 using std::string;
 using std::cin;
@@ -18,27 +19,44 @@ struct ModInfo {
     string website;
 };
 
-ModInfo getInfo() {
+ModInfo getInfo(const Config& config) {
     ModInfo mod;
 
     cout << "Enter Mod Name: ";
     getline(cin, mod.name);
+    if (mod.name.empty()) {
+        mod.name = config.default_name;
+    }
 
-    cout << "Enter Display Name: ";
+    cout << "\nEnter Display Name: ";
     getline(cin, mod.dName);
+    if (mod.dName.empty()) {
+        mod.dName = config.default_dname;
+    }
 
-    cout << "Enter Description: ";
+    cout << "\nEnter Description: ";
     getline(cin, mod.desc);
+    if (mod.desc.empty()) {
+        mod.desc = config.default_desc;
+    }
 
-    cout << "Enter Author: ";
+    cout << "\nEnter Author: ";
     getline(cin, mod.author);
+    if (mod.author.empty()) {
+        mod.author = config.default_author;
+    }
 
-    cout << "Enter Version: ";
+    cout << "\nEnter Version: ";
     getline(cin, mod.version);
+    if (mod.version.empty()) {
+        mod.version = config.default_version;
+    }
 
-    cout << "Enter Website (optional): ";
-
+    cout << "\nEnter Website: ";
     getline(cin, mod.website);
+    if (mod.website.empty()) {
+        mod.website = config.default_website;
+    }
 
     return mod;
 }
@@ -57,7 +75,7 @@ void writefile(const string& fileName, const ModInfo& mod) {
         xmlFile << "</ModInfo>\n";
 
         xmlFile.close();
-        cout << "ModInfo.xml file created successfully!\n";
+        cout << "\nModInfo.xml file created successfully!\n";
     }
     else {
         std::cerr << "Error: Unable to create ModInfo.xml! See Errors.md\n";
@@ -75,17 +93,20 @@ void initMsg() {    // Start Msg
 
 };
 
+
 int main() {
+    const Config config = loadConfig();
+    
+    if (config.show_welcome_message) {
+        initMsg();
+    } else {
+        cout << "Skipping welcome message.\n";
+    }
 
-    initMsg();
+    const ModInfo mod = getInfo(config);
 
-    const ModInfo
-    mod = getInfo();
-
-
-    const string fileName = "ModInfo.xml";
+    const string fileName = config.output_filename;
     writefile(fileName, mod);
-
 
     return 0;
 }
