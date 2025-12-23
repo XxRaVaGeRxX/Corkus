@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 
-#include "config.h"
+#include "../Headers/config.h"
 
 using std::string;
 using std::cin;

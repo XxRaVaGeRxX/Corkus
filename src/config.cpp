@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 #include <filesystem>
-#include "config.h"
+#include "../Headers/config.h"
 #include <iostream>
 
 using std::string;
