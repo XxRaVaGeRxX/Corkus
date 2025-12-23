@@ -8,6 +8,7 @@ using std::cin;
 using std::cout;
 using std::getline;
 
+
 struct ModInfo {
     string name;
     string dName;
@@ -42,8 +43,6 @@ ModInfo getInfo() {
     return mod;
 }
 
-string userName;
-
 void writefile(const string& fileName, const ModInfo& mod) {
 
     if (std::ofstream xmlFile(fileName); xmlFile.is_open()) {
@@ -64,17 +63,21 @@ void writefile(const string& fileName, const ModInfo& mod) {
         std::cerr << "Error: Unable to create ModInfo.xml! See Errors.md\n";
         return;
     }
-}
+};
 
-int main() {
-
-    using std::endl;
+void initMsg() {    // Start Msg
 
     cout << "Welcome to Corkus!\n";
     cout << "A CLI app for creating a ModInfo.xml\n";
-    cout << "Thank you for using Corkus!\n";
-    cout << "Ready to begin? Press any key to continue..." << endl;
+    cout << "Thank you for using the app!\n";
+    cout << "Ready to begin? Press any key to continue..." << std::endl;
     cin.get();
+
+};
+
+int main() {
+
+    initMsg();
 
     const ModInfo
     mod = getInfo();
@@ -82,6 +85,7 @@ int main() {
 
     const string fileName = "ModInfo.xml";
     writefile(fileName, mod);
+
 
     return 0;
 }
