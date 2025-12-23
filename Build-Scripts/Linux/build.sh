@@ -5,7 +5,7 @@ mkdir -p build
 cd build || exit 1
 
 echo "Setting cmake build to Release..."
-cmake -DCMAKE_BUILD_TYPE=Release -S .. -B .
+cmake -DCMAKE_BUILD_TYPE=Release -S ../../.. -B .
 
 echo "Running cmake build..."
 cmake --build .
