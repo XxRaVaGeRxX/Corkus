@@ -3,8 +3,11 @@
 ## Overview
 > Free use ModInfo.xml Generator
 > 
-> Enjoy the simplicity of a one click file generation app
-> 
+> Enjoy the simplicity of a one click file generation app - Set up after first run with `corkus.config`
+>
+> Corkus will auto-detect and generate a .config if you delete your original copy
+>
+> Turn off Auto Generation to "save" your config. Otherwise Corkus will overwrite every run.
 
 ## Features
 >Friendly CLI interface
