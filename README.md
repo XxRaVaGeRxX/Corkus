@@ -28,9 +28,11 @@
 >
 >     git clone https://github.com/XxRaVaGeRxX/Corkus.git
 >
-> `cd` into the repo
+> `cd` into the repo location
+> 
+> Then `cd /Build-Scripts/Linux`
 >
->Run this command in the repo directory - Gives permission to execute
+>Run this command in the same directory - Gives permission to execute
 >
 >     chmod +x build.sh
 >
@@ -51,3 +53,24 @@
 >Give it permission to run with `chmod +x ./Corkus` in appropriate directory
 >
 >Then run the executable with `./Corkus`
+
+## Windows
+>Please Note: Windows is not officially supported yet. I do not own a Windows machine to test on. 
+> 
+> If any windows user wants to help out, please feel free to submit a pull request.
+> 
+>Ensure you have a recent CMake
+> 
+>Start by cloning the repo
+>
+>`cd` into the repo directory
+>
+>`cd /Build-Scripts/Windows`
+>
+>Run the build.bat file
+>
+> `cd` into the repo directory
+>
+> `cd /build`
+>
+> `Corkus.exe`
