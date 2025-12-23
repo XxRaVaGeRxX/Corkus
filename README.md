@@ -48,7 +48,7 @@
 
 >Or try the pre-compiled executable in the build folder
 >
->Download linux executable in the [build folder](https://github.com/XxRaVaGeRxX/Corkus/tree/master/build)
+>Download linux executable in the [build folder](https://github.com/XxRaVaGeRxX/Corkus/tree/master/Build-Scripts/Linux/build)
 >
 >Give it permission to run with `chmod +x ./Corkus` in appropriate directory
 >
