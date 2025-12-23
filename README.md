@@ -1,6 +1,8 @@
 # Corkus
 >A straightforward tool for creating ModInfo.xml files for 7 Days to Die Modlets, developed in C++.
 ## Overview
+>Wiki with more detailed instructions coming soon. 
+>
 > Free use ModInfo.xml Generator
 > 
 > Enjoy the simplicity of a one click file generation app - Set up after first run with `corkus.config`
