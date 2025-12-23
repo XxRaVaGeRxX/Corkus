@@ -7,7 +7,7 @@
 > 
 
 ## Features
->User-friendly CLI interface
+>Friendly CLI interface
 > 
 >Quick and easy file generation
 > 
@@ -30,11 +30,11 @@
 >
 > `cd` into the repo
 >
->Run this command in the repo directory
+>Run this command in the repo directory - Gives permission to execute
 >
 >     chmod +x build.sh
 >
->Then run this command 
+>Then run this command - CMake Build Script for Linux
 >
 >     ./build.sh
 >
