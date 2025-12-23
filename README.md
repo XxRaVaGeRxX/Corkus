@@ -15,6 +15,8 @@
 >Quick and easy file generation
 > 
 >Cross-platform compatibility with CMake
+>
+>Now has corkus.config for setting defaults
 
 ## Usage
 >Clone the repository
@@ -56,6 +58,8 @@
 >Give it permission to run with `chmod +x ./Corkus` in appropriate directory
 >
 >Then run the executable with `./Corkus`
+>
+>`OR CLICK THE EXE in the path you want to create!!`
 
 ## Windows
 >Please Note: Windows is not officially supported yet. I do not own a Windows machine to test on. 
