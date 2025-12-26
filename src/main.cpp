@@ -1,3 +1,4 @@
+#include <filesystem>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -76,6 +77,7 @@ void writefile(const string& fileName, const ModInfo& mod) {
 
         xmlFile.close();
         cout << "\nModInfo.xml file created successfully!\n";
+        cout << "Location: " << std::filesystem::absolute(fileName) << std::endl;
     }
     else {
         std::cerr << "Error: Unable to create ModInfo.xml! See Errors.md\n";
@@ -85,7 +87,7 @@ void writefile(const string& fileName, const ModInfo& mod) {
 
 void initMsg() {    // Start Msg
 
-    cout << "Welcome to Corkus!\n";
+    cout << "Welcome to Corkus 1.1!\n";
     cout << "A CLI app for creating a ModInfo.xml\n";
     cout << "Thank you for using the app!\n";
     cout << "Ready to begin? Press any key to continue..." << std::endl;
@@ -96,7 +98,6 @@ void initMsg() {    // Start Msg
 
 int main() {
     const Config config = loadConfig();
-    
     if (config.show_welcome_message) {
         initMsg();
     } else {
@@ -110,3 +111,4 @@ int main() {
 
     return 0;
 }
+// version: 1.1

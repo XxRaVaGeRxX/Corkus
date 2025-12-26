@@ -4,8 +4,39 @@
 #include <filesystem>
 #include "../Headers/config.h"
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 using std::string;
+using std::cout;
+
+auto delay_MS = std::chrono::milliseconds(55);
+auto delay2_MS = std::chrono::milliseconds(100);
+
+void showLoad() {
+
+    cout << ">Loading>  ";
+    for (int i = 0; i < 20; i++) {
+        cout << ">" << std::flush;
+        std::this_thread::sleep_for(delay_MS);
+    }
+    cout << "\n";
+}
+
+void showLoad2() {
+
+    cout << ">Searching For Configuration File>  ";
+    for (int i = 0; i < 5; i++) {
+        cout << ">>" << std::flush;
+        std::this_thread::sleep_for(delay2_MS);
+    }
+    cout << "/../..";
+    cout << "\n";
+
+    if (std::filesystem::exists("corkus.config")) {
+        cout << "Found corkus.config file in " << std::filesystem::absolute("corkus.config") << "\n";
+    }
+}
 
 void genDefault() {
     const string configFile = "corkus.config";
@@ -15,6 +46,8 @@ void genDefault() {
         std::cerr << "Error: Unable to create config file!\n";
         return;
     }
+
+    showLoad();
     
     file << "# Corkus Config File\n";
     file << "# A Quick Guide\n";
@@ -40,23 +73,25 @@ void genDefault() {
     file << "auto_generate_config=true (Turn Off To Maintain Custom Settings)\n";
     
     file.close();
-    std::cout << "Generated default config file: corkus.config\n";
+    cout << "Generated default config file in directory with exe. NAME : corkus.config\n";
+    cout << "Location: " << std::filesystem::absolute ("corkus.config") << std::endl;
 }
 
 Config loadConfig() {
+
+    showLoad2();
+
     Config config;
     const string configFile = "corkus.config";
 
     std::ifstream file(configFile);
     if (!file.is_open()) {
-        std::cout << "Config file not found.\n";
+        cout << "Config file not found.\n";
         
         // Auto-generate if enabled by default
         if (config.auto_generate_config) {
-            std::cout << "Generating default config file...\n";
+            cout << "Generating default config file...\n";
             genDefault();
-        } else {
-            std::cout << "Using built-in defaults.\n";
         }
         
         return config;
@@ -93,3 +128,4 @@ Config loadConfig() {
 
     return config;
 }
+// version: 1.1
