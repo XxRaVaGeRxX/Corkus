@@ -24,6 +24,8 @@ Config loadConfig();
 
 void genDefault();
 
+void genCustom();
+
 void showLoad();
 
 const Config& getConfig();

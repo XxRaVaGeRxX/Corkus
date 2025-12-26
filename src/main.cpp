@@ -2,8 +2,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <thread>
 
 #include "../headers/config.h"
+#include "../headers/quickmenu.h"
 
 using std::string;
 using std::cin;
@@ -19,6 +21,19 @@ struct ModInfo {
     string version;
     string website;
 };
+
+ModInfo getInfoFromConfig(const Config& config) {
+    ModInfo mod;
+    mod.name = config.dName;
+    mod.dName = config.dDisName;
+    mod.desc = config.dDesc;
+    mod.author = config.dAuthor;
+    mod.version = config.dVersion;
+    mod.website = config.dWebsite;
+
+    return mod;
+
+}
 
 ModInfo getInfo(const Config& config) {
     ModInfo mod;
@@ -62,7 +77,7 @@ ModInfo getInfo(const Config& config) {
     return mod;
 }
 
-void writefile(const string& fileName, const ModInfo& mod) {
+void writeFile(const string& fileName, const ModInfo& mod) {
 
     if (std::ofstream xmlFile(fileName); xmlFile.is_open()) {
         xmlFile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
@@ -86,14 +101,26 @@ void writefile(const string& fileName, const ModInfo& mod) {
 };
 
 void initMsg() {    // Start Msg
+    cout << "\n";
 
-    cout << "</>Welcome to Corkus 1.1!</>\n";
-    cout << "</>A CLI app for creating a ModInfo.xml</>\n";
-    cout << "</>Thank you for using the app!</>\n";
-    cout << "</>Ready to begin? Press any key to continue...</>" << std::endl;
-    cin.get();
 
-};
+cout << R"(     ██████╗ ██████╗ ██████╗ ██╗  ██╗██╗   ██╗███████╗
+    ██╔════╝██╔═══██╗██╔══██╗██║ ██╔╝██║   ██║██╔════╝
+    ██║     ██║   ██║██████╔╝█████╔╝ ██║   ██║███████╗
+    ██║     ██║   ██║██╔══██╗██╔═██╗ ██║   ██║╚════██║
+    ╚██████╗╚██████╔╝██║  ██║██║  ██╗╚██████╔╝███████║
+    ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝ )"<< std::endl;
+    this_thread::sleep_for(1200ms);
+
+
+
+    cout << "\n</></>Everything Looks Good!</></>\n";
+    cout << "\n</>Welcome to Corkus 1.2.1!</>\n\n";
+    cout << "</>A CLI app for creating a ModInfo.xml</>\n\n";
+    cout << "</>Thank you for using the app!</>\n\n";
+    cout << "</>\nCorkus Is Ready</>\n" << std::endl;
+
+}
 
 
 int main() {
@@ -104,11 +131,12 @@ int main() {
         cout << "</>Skipping Welcome Message</>"
                 "\n";
     }
+    SkipMenu();
 
     const ModInfo mod = getInfo(config);
 
     const string fileName = config.output_filename;
-    writefile(fileName, mod);
+    writeFile(fileName, mod);
 
     return 0;
 }
