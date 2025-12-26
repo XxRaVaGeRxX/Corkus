@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 
-#include "../Headers/config.h"
+#include "../headers/config.h"
 
 using std::string;
 using std::cin;
@@ -23,40 +23,40 @@ struct ModInfo {
 ModInfo getInfo(const Config& config) {
     ModInfo mod;
 
-    cout << "Enter Mod Name: ";
+    cout << "</>Enter Mod Name</> ";
     getline(cin, mod.name);
     if (mod.name.empty()) {
-        mod.name = config.default_name;
+        mod.name = config.dName;
     }
 
-    cout << "\nEnter Display Name: ";
+    cout << "\n</>Enter Display Name</> ";
     getline(cin, mod.dName);
     if (mod.dName.empty()) {
-        mod.dName = config.default_dname;
+        mod.dName = config.dDisName;
     }
 
-    cout << "\nEnter Description: ";
+    cout << "\n</>Enter Description</> ";
     getline(cin, mod.desc);
     if (mod.desc.empty()) {
-        mod.desc = config.default_desc;
+        mod.desc = config.dDesc;
     }
 
-    cout << "\nEnter Author: ";
+    cout << "\n</>Enter Author</> ";
     getline(cin, mod.author);
     if (mod.author.empty()) {
-        mod.author = config.default_author;
+        mod.author = config.dAuthor;
     }
 
-    cout << "\nEnter Version: ";
+    cout << "\n</>Enter Version</> ";
     getline(cin, mod.version);
     if (mod.version.empty()) {
-        mod.version = config.default_version;
+        mod.version = config.dVersion;
     }
 
-    cout << "\nEnter Website: ";
+    cout << "\n</>Enter Website</> ";
     getline(cin, mod.website);
     if (mod.website.empty()) {
-        mod.website = config.default_website;
+        mod.website = config.dWebsite;
     }
 
     return mod;
@@ -80,17 +80,17 @@ void writefile(const string& fileName, const ModInfo& mod) {
         cout << "Location: " << std::filesystem::absolute(fileName) << std::endl;
     }
     else {
-        std::cerr << "Error: Unable to create ModInfo.xml! See Errors.md\n";
+        std::cerr << "</>|</>Error: Unable to create ModInfo.xml! See Errors in Corkus wiki</>|</>\n";
         return;
     }
 };
 
 void initMsg() {    // Start Msg
 
-    cout << "Welcome to Corkus 1.1!\n";
-    cout << "A CLI app for creating a ModInfo.xml\n";
-    cout << "Thank you for using the app!\n";
-    cout << "Ready to begin? Press any key to continue..." << std::endl;
+    cout << "</>Welcome to Corkus 1.1!</>\n";
+    cout << "</>A CLI app for creating a ModInfo.xml</>\n";
+    cout << "</>Thank you for using the app!</>\n";
+    cout << "</>Ready to begin? Press any key to continue...</>" << std::endl;
     cin.get();
 
 };
@@ -101,7 +101,8 @@ int main() {
     if (config.show_welcome_message) {
         initMsg();
     } else {
-        cout << "Skipping welcome message.\n";
+        cout << "</>Skipping Welcome Message</>"
+                "\n";
     }
 
     const ModInfo mod = getInfo(config);
@@ -111,4 +112,3 @@ int main() {
 
     return 0;
 }
-// version: 1.1

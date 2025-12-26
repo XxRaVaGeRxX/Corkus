@@ -5,6 +5,6 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(Corkus src/main.cpp
 		src/config.cpp
-		Headers/config.h)
+		headers/config.h)
 
 target_compile_options(Corkus PRIVATE -Wall -Werror)

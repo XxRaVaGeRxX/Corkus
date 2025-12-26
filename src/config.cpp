@@ -2,22 +2,24 @@
 #include <string>
 #include <map>
 #include <filesystem>
-#include "../Headers/config.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
 
+#include "../headers/config.h"
+
 using std::string;
 using std::cout;
+using std::filesystem::absolute;
 
-auto delay_MS = std::chrono::milliseconds(55);
-auto delay2_MS = std::chrono::milliseconds(100);
+auto delay_MS = std::chrono::milliseconds(100);
+auto delay2_MS = std::chrono::milliseconds(200);
 
 void showLoad() {
 
-    cout << ">Loading>  ";
-    for (int i = 0; i < 20; i++) {
-        cout << ">" << std::flush;
+    cout << "</>Loading</>  ";
+    for (int i = 0; i < 6; i++) {
+        cout << "</>" << std::flush;
         std::this_thread::sleep_for(delay_MS);
     }
     cout << "\n";
@@ -25,16 +27,16 @@ void showLoad() {
 
 void showLoad2() {
 
-    cout << ">Searching For Configuration File>  ";
-    for (int i = 0; i < 5; i++) {
-        cout << ">>" << std::flush;
+    cout << "</>Searching For Configuration File</>  ";
+    for (int i = 0; i < 6; i++) {
+        cout << "</>" << std::flush;
         std::this_thread::sleep_for(delay2_MS);
     }
-    cout << "/../..";
+    cout << "  </>corkus.config</>";
     cout << "\n";
 
     if (std::filesystem::exists("corkus.config")) {
-        cout << "Found corkus.config file in " << std::filesystem::absolute("corkus.config") << "\n";
+        cout << "</>Found corkus.config file in </>" << absolute("corkus.config") << "</> \n";
     }
 }
 
@@ -43,38 +45,39 @@ void genDefault() {
     
     std::ofstream file(configFile);
     if (!file.is_open()) {
-        std::cerr << "Error: Unable to create config file!\n";
+        std::cerr << "</>Error: Unable to create configuration file!</>\n";
         return;
     }
 
     showLoad();
     
-    file << "# Corkus Config File\n";
-    file << "# A Quick Guide\n";
-    file << "# true or false for the boolean values\n";
+    file << "# *** CORKUS CONFIG FILE ***\n";
+    file << "# A Quick Guide For Use\n";
+    file << "# true or false only\n";
     file << "# what you put here will be used as input\n";
     file << "# if you want to simply click 'Corkus' & generate\n";
+    file << "# a file in the same directory\n";
     file << "# Lines starting with # are commented out\n\n";
     
-    file << "# Default values for modlet creation\n";
-    file << "default_name=MyCoolMod\n";
-    file << "default_dname=Cool Mod Name\n";
-    file << "default_desc=My Cool Mod Project\n";
-    file << "default_author=YourNameHere\n";
-    file << "default_version=1.0.0\n";
-    file << "default_website=https://your-website.com\n\n";
+    file << "# *** Default Values ***\n";
+    file << "Name=MyCoolMod\n";
+    file << "DisplayName=Cool Mod Name\n";
+    file << "DefaultDescription=My Cool Mod Project\n";
+    file << "Author=YourNameHere\n";
+    file << "Version=1.0.0\n";
+    file << "YourModWebsite=https://your-website.com\n\n";
     
-    file << "# Output settings (leave default for 7dtd)\n";
-    file << "output_filename=ModInfo.xml\n\n";
+    file << "# *** Output settings *** (leave default for 7dtd)\n";
+    file << "XMLFileName=ModInfo.xml\n\n";
     
-    file << "# Application behavior\n";
-    file << "show_welcome_message=true\n";
-    file << "pause_after_completion=true\n";
-    file << "auto_generate_config=true (Turn Off To Maintain Custom Settings)\n";
-    
+    file << "# *** Application Behavior ***\n";
+    file << "WelcomeMessage=true\n";
+    file << "PauseAfterCompletion=true\n";
+    file << "AutoGenerateConfig=true\n";
+
     file.close();
     cout << "Generated default config file in directory with exe. NAME : corkus.config\n";
-    cout << "Location: " << std::filesystem::absolute ("corkus.config") << std::endl;
+    cout << "Location: " << absolute ("corkus.config") << std::endl;
 }
 
 Config loadConfig() {
@@ -86,14 +89,9 @@ Config loadConfig() {
 
     std::ifstream file(configFile);
     if (!file.is_open()) {
-        cout << "Config file not found.\n";
-        
-        // Auto-generate if enabled by default
-        if (config.auto_generate_config) {
-            cout << "Generating default config file...\n";
-            genDefault();
-        }
-        
+        cout << "</>Configuration file not found.</>\n";
+        cout << "</>Generating default file...</>\n";
+        genDefault();
         return config;
     }
 
@@ -111,21 +109,19 @@ Config loadConfig() {
         while (!key.empty() && (key.back() == ' ' || key.back() == '\t')) key.pop_back();
         while (!value.empty() && (value.front() == ' ' || value.front() == '\t')) value.erase(0, 1);
 
-        if (key == "default_author") config.default_author = value;
-        else if (key == "default_version") config.default_version = value;
-        else if (key == "default_website") config.default_website = value;
-        else if (key == "default_name") config.default_name = value;
-        else if (key == "default_dname") config.default_dname = value;
-        else if (key == "default_desc") config.default_desc = value;
-        else if (key == "output_filename") config.output_filename = value;
-        else if (key == "show_welcome_message") config.show_welcome_message = (value == "true");
-        else if (key == "pause_after_completion") config.pause_after_completion = (value == "true");
-        else if (key == "auto_generate_config") config.auto_generate_config = (value == "true");
-
+        if (key == "Author") config.dAuthor = value;
+        else if (key == "Version") config.dVersion = value;
+        else if (key == "Website") config.dWebsite = value;
+        else if (key == "Name") config.dName = value;
+        else if (key == "DisplayName") config.dDisName= value;
+        else if (key == "DefaultDescription") config.dDesc = value;
+        else if (key == "XMLFileName") config.output_filename = value;
+        else if (key == "WelcomeMessage") config.show_welcome_message = (value == "true");
+        else if (key == "PauseAfterCompletion") config.pause_after_completion = (value == "true");
+        else if (key == "AutoGenerateConfig") config.auto_generate_config = (value == "true");
     }
 
     file.close();
 
     return config;
 }
-// version: 1.1

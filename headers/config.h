@@ -7,12 +7,12 @@ using namespace std;
 
 struct Config {
 
-    string default_author = "Unknown";
-    string default_version = "1.0.0";
-    string default_website = "https://your-website.com";
-    string default_desc = "My cool mod project.";
-    string default_dname = "Cool Mod Name";
-    string default_name = "MyCoolMod";
+    string dAuthor = "Unknown";
+    string dVersion = "1.0.0";
+    string dWebsite = "https://your-website.com";
+    string dDesc = "My cool mod project.";
+    string dDisName = "Cool Mod Name";
+    string dName = "MyCoolMod";
     string output_filename = "ModInfo.xml";
     bool show_welcome_message = true;
     bool pause_after_completion = true;

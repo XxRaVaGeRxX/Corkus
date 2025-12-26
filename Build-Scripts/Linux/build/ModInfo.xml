@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ModInfo>
-    <Name value="MyCoolMod" />
-    <DisplayName value="Cool Mod Name" />
-    <Description value="My cool mod project." />
-    <Author value="Unknown" />
-    <Version value="1.0.0" />
-    <Website value="https://your-website.com" />
-</ModInfo>
