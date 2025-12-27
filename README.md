@@ -1,4 +1,4 @@
-# Corkus - Pop the cork on your mods! 
+# </> Corkus </> -- Pop the cork on your mods! 
 ### ©2026 RavagerStudio > License: GPL-3.0
 >A straightforward tool for creating ModInfo.xml files for 7 Days to Die Modlets, developed in C++.
 > 
