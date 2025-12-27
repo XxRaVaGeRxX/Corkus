@@ -2,7 +2,9 @@
 ### ©2026 RavagerStudio > License: GPL-3.0
 >A straightforward tool for creating ModInfo.xml files for 7 Days to Die Modlets, developed in C++.
 > 
-> Now in version 1.2.2, A visible file path & loading bar for the CLI People 
+> Now in version 1.2.2, Prepare for v2.0 Everyone the app will create whole mod folders ready for any dev to make a modlet
+>
+>Time to pop the cork on your mod workflow
 ## Overview
 >Wiki with more detailed instructions/changelog coming soon. 
 >
