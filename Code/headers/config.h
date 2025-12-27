@@ -24,7 +24,7 @@ Config loadConfig();
 
 void genDefault();
 
-void genCustom();
+bool genCustom();
 
 void showLoad();
 
